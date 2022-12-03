@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author ERDA WYNE
  */
-@RestController
+@RestController //untuk membuat layanan web yang tenang dengan 
+               //bantuan dan memungkinkan kelas menangani permintaan yang dibuat oleh klien
+
 public class myController {
     private static Map<String, Product> productRepo = new HashMap<>();
     static {
