@@ -43,13 +43,14 @@ public class myController {
     
     }
     
-    @RequestMapping(value = "/products")
+    @RequestMapping(value = "/products")        //Memanggil / menjalankan program saat running
     public ResponseEntity<Object> getProduct(){
         return new ResponseEntity<>(productRepo.values(), HttpStatus.OK);
         
     }
     
-    @RequestMapping(value = "/products", method = RequestMethod.POST)
+    //Membuat metode permintaan post
+    @RequestMapping(value = "/products", method = RequestMethod.POST) 
     public ResponseEntity<Object> createProduct(@RequestBody Product product){
         productRepo.put(product.getId(), product);
         return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED);
