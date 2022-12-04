@@ -68,13 +68,18 @@ public class myController {
     productRepo.put(id, product);       //mengambil id,product sekaligus
     return new ResponseEntity<>("Product is update successsfully", HttpStatus.OK);//mengembalikan nilai yang tersimpan 
         //dalam sebuah variabel
-        //Dan menampilkan teks "Product is created successfully" 
+        //Dan menampilkan teks "Product is update successfully" 
     }
     
+    
+    //Membuat metode permintaan HTTP Delete
     @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> delete(@PathVariable("id") String id){
-        productRepo.remove(id);     
+        productRepo.remove(id);      //membuat variabel hapus 
         return new ResponseEntity<>("Product is deleted successsfully", HttpStatus.OK);
+        //mengembalikan nilai yang tersimpan 
+        //dalam sebuah variabel
+        //Dan menampilkan teks "Product is delete successfully" 
     }
     
 }
