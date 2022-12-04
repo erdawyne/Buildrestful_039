@@ -59,17 +59,21 @@ public class myController {
     }
     
     //Membuat metode permintaan HTTP PUT
-    @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT) //URI permintaan adalah /products/{id} yang akan mengembalikan 
+                                                                          //String setelah produk ke dalam repositori HashMap.
+                                                                          //variabel Path {id} yang menentukan ID produk yang perlu diperbarui
     public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Product product){
-    productRepo.remove(id);
-    product.setId(id);
-    productRepo.put(id, product);
-    return new ResponseEntity<>("Product is update successsfully", HttpStatus.OK);
+    productRepo.remove(id);     //membuat variabel hapus 
+    product.setId(id);          
+    productRepo.put(id, product);       //mengambil id,product sekaligus
+    return new ResponseEntity<>("Product is update successsfully", HttpStatus.OK);//mengembalikan nilai yang tersimpan 
+        //dalam sebuah variabel
+        //Dan menampilkan teks "Product is created successfully" 
     }
     
     @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> delete(@PathVariable("id") String id){
-        productRepo.remove(id);
+        productRepo.remove(id);     
         return new ResponseEntity<>("Product is deleted successsfully", HttpStatus.OK);
     }
     
