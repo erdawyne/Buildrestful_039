@@ -58,6 +58,7 @@ public class myController {
         //Dan menampilkan teks "Product is created successfully" 
     }
     
+    //Membuat metode permintaan HTTP PUT
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Product product){
     productRepo.remove(id);
