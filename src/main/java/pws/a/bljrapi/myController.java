@@ -49,12 +49,13 @@ public class myController {
         
     }
     
-    //Membuat metode permintaan post
+    //Membuat metode permintaan http post
     @RequestMapping(value = "/products", method = RequestMethod.POST) 
     public ResponseEntity<Object> createProduct(@RequestBody Product product){
         productRepo.put(product.getId(), product);
-        return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED);
-        
+        return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED); //mengembalikan nilai yang tersimpan 
+        //dalam sebuah variabel
+        //Dan menampilkan teks "Product is created successfully" 
     }
     
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
