@@ -37,8 +37,8 @@ public class myController {
     productRepo.put(almond.getId(), almond);
     
     Product ginger = new Product();
-    ginger.setId("3");
-    ginger.setName("Indian Ginger");
+    ginger.setId("3");                          //Memberikan id diproduk
+    ginger.setName("Indian Ginger");            //Memberikan name di produk
     productRepo.put(ginger.getId(), ginger);
     
     }
