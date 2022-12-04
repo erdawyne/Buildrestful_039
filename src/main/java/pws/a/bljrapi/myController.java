@@ -24,11 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
                //bantuan dan memungkinkan kelas menangani permintaan yang dibuat oleh klien
 
 public class myController {
-    private static Map<String, Product> productRepo = new HashMap<>();
+    private static Map<String, Product> productRepo = new HashMap<>(); //HashMap untuk menyimpan produk
     static {
-    Product honey = new Product();
-    honey.setId("1");
-    honey.setName("Honey");
+    Product honey = new Product();              //Membuat produk 
+    honey.setId("1");                           //Memberikan id diproduk
+    honey.setName("Honey");                     //Memberikan name di produk
     productRepo.put(honey.getId(), honey);
     
     Product almond = new Product();
