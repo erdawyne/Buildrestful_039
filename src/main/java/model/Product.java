@@ -9,23 +9,23 @@ package model;
  *
  * @author ERDA WYNE
  */
-public class Product {
+public class Product {              //membuat method get set  class product yg berisi id, name
     private String id;
     private String name;
 
-    public String getId() {
+    public String getId() {         //mengembalikan nilai pada dari variable dengan menggunakan fungsi return
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(String id) {  //set merupakan method void untuk mensetting atau memberikan nilai pada variable
         this.id = id;
     }
 
-    public String getName() {
+    public String getName() {               //mengembalikan nilai pada dari variable dengan menggunakan fungsi return
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) {   //set merupakan method void untuk mensetting atau memberikan nilai pada variable
         this.name = name;
     }
     
