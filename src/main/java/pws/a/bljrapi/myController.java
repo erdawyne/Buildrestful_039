@@ -54,7 +54,7 @@ public class myController {
     public ResponseEntity<Object> createProduct(@RequestBody Product product){
         if(productRepo.containsKey(product.getId())){
            
-            return new ResponseEntity<>("id already", HttpStatus.OK);  
+            return new ResponseEntity<>("id already", HttpStatus.OK);//menampilkan bahwa id sudah digunakan
         //dalam sebuah variabel
         //Dan menampilkan teks "Product is created successfully"
         }else{ 
@@ -69,12 +69,19 @@ public class myController {
                                                                           //String setelah produk ke dalam repositori HashMap.
                                                                           //variabel Path {id} yang menentukan ID produk yang perlu diperbarui
     public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Product product){
-    productRepo.remove(id);     //membuat variabel hapus 
-    product.setId(id);          
-    productRepo.put(id, product);       //mengambil id,product sekaligus
-    return new ResponseEntity<>("Product is update successsfully", HttpStatus.OK);//mengembalikan nilai yang tersimpan 
-        //dalam sebuah variabel
-        //Dan menampilkan teks "Product is update successfully" 
+        if(!productRepo.containsKey(id)){
+            
+            return new ResponseEntity<>("Product is update successsfully", HttpStatus.OK);//mengembalikan nilai yang tersimpan  
+        }
+        else{
+                productRepo.remove(id);     //membuat variabel hapus 
+                product.setId(id);          
+                productRepo.put(id, product);       //mengambil id,product sekaligus
+                return new ResponseEntity<>("Data id doesn't exists", HttpStatus.OK);
+               //dalam sebuah variabel
+                //Dan menampilkan teks "Product is update successfully" 
+        }
+
     }
     
     
