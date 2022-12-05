@@ -71,13 +71,13 @@ public class myController {
     public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Product product){
         if(!productRepo.containsKey(id)){
             
-            return new ResponseEntity<>("Product is update successsfully", HttpStatus.OK);//mengembalikan nilai yang tersimpan  
+            return new ResponseEntity<>("Id doesn't exist", HttpStatus.OK);//mengembalikan nilai yang tersimpan  
         }
         else{
                 productRepo.remove(id);     //membuat variabel hapus 
                 product.setId(id);          
                 productRepo.put(id, product);       //mengambil id,product sekaligus
-                return new ResponseEntity<>("Data id doesn't exists", HttpStatus.OK);
+                return new ResponseEntity<>("Product is update successsfully", HttpStatus.OK);
                //dalam sebuah variabel
                 //Dan menampilkan teks "Product is update successfully" 
         }
