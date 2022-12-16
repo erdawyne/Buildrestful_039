@@ -7,9 +7,11 @@ package pws.a.bljrapi;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import model.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,22 +25,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController //untuk membuat layanan web yang tenang dengan 
                //bantuan dan memungkinkan kelas menangani permintaan yang dibuat oleh klien
 
-public class myController {
+public class myController {     
     private static Map<String, Product> productRepo = new HashMap<>(); //HashMap untuk menyimpan produk
     static {
     Product honey = new Product();              //Membuat produk 
     honey.setId("1");                           //Memberikan id diproduk
     honey.setName("Honey");                     //Memberikan name di produk
+    honey.setPrice(10000);
+    honey.setDiscount(0.5);
+    honey.setTotal();
     productRepo.put(honey.getId(), honey);
     
     Product almond = new Product();
     almond.setId("2");                          //Memberikan id diproduk
     almond.setName("Almod");                    //Memberikan name di produk
+    almond.setPrice(20000);
+    almond.setDiscount(0.5);
+    almond.setTotal();
     productRepo.put(almond.getId(), almond);
     
     Product ginger = new Product();
     ginger.setId("3");                          //Memberikan id diproduk
     ginger.setName("Indian Ginger");            //Memberikan name di produk
+    ginger.setPrice(3000);
+    ginger.setDiscount(0.2);
+    ginger.setTotal();
     productRepo.put(ginger.getId(), ginger);
     
     }
@@ -59,6 +70,7 @@ public class myController {
         //Dan menampilkan teks "Product is created successfully"
         }else{ 
             productRepo.put(product.getId(), product);
+            product.setTotal();
             return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED); //mengembalikan nilai yang tersimpan
         }
         
@@ -75,6 +87,7 @@ public class myController {
         }
         else{
                 productRepo.remove(id);     //membuat variabel hapus 
+                product.setTotal();
                 product.setId(id);          
                 productRepo.put(id, product);       //mengambil id,product sekaligus
                 return new ResponseEntity<>("Product is update successsfully", HttpStatus.OK);
