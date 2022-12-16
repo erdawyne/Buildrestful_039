@@ -37,6 +37,7 @@ public class myController {
     honey.setName("Honey");                     //Memberikan name di produk
     honey.setPrice(10000);
     honey.setDiscount(0.5);
+    //menghitung total  ditiap id
     honey.setTotal ((honey.getPrice()-(honey.getPrice()*honey.getDiscount())));
     productRepo.put(honey.getId(), honey);
     
@@ -45,6 +46,7 @@ public class myController {
     almond.setName("Almod");                    //Memberikan name di produk
     almond.setPrice(20000);
     almond.setDiscount(0.5);
+    //menghitung total  ditiap id
     almond.setTotal ((almond.getPrice()-(almond.getPrice()*almond.getDiscount())));
     productRepo.put(almond.getId(), almond);
     
@@ -53,6 +55,7 @@ public class myController {
     ginger.setName("Indian Ginger");            //Memberikan name di produk
     ginger.setPrice(3000);
     ginger.setDiscount(0.2);
+    //menghitung total  ditiap id
     ginger.setTotal((ginger.getPrice()-(ginger.getPrice()*ginger.getDiscount())));
     productRepo.put(ginger.getId(), ginger);
     
@@ -73,6 +76,7 @@ public class myController {
         //dalam sebuah variabel
         //Dan menampilkan teks "Product is created successfully"
         }else{
+            //menghitung total   
             product.setTotal((product.getPrice()-(product.getPrice()*product.getDiscount())));
             productRepo.put(product.getId(), product);
             return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED); //mengembalikan nilai yang tersimpan
