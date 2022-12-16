@@ -28,12 +28,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class myController {     
     private static Map<String, Product> productRepo = new HashMap<>(); //HashMap untuk menyimpan produk
     static {
+    int price;
+    double total;
+    
+    
     Product honey = new Product();              //Membuat produk 
     honey.setId("1");                           //Memberikan id diproduk
     honey.setName("Honey");                     //Memberikan name di produk
     honey.setPrice(10000);
     honey.setDiscount(0.5);
-    honey.setTotal();
+    honey.setTotal ((honey.getPrice()-(honey.getPrice()*honey.getDiscount())));
     productRepo.put(honey.getId(), honey);
     
     Product almond = new Product();
@@ -41,7 +45,7 @@ public class myController {
     almond.setName("Almod");                    //Memberikan name di produk
     almond.setPrice(20000);
     almond.setDiscount(0.5);
-    almond.setTotal();
+    almond.setTotal ((almond.getPrice()-(almond.getPrice()*almond.getDiscount())));
     productRepo.put(almond.getId(), almond);
     
     Product ginger = new Product();
@@ -49,7 +53,7 @@ public class myController {
     ginger.setName("Indian Ginger");            //Memberikan name di produk
     ginger.setPrice(3000);
     ginger.setDiscount(0.2);
-    ginger.setTotal();
+    ginger.setTotal((ginger.getPrice()-(ginger.getPrice()*ginger.getDiscount())));
     productRepo.put(ginger.getId(), ginger);
     
     }
@@ -68,9 +72,9 @@ public class myController {
             return new ResponseEntity<>("id already", HttpStatus.OK);//menampilkan bahwa id sudah digunakan
         //dalam sebuah variabel
         //Dan menampilkan teks "Product is created successfully"
-        }else{ 
+        }else{
+            product.setTotal((product.getPrice()-(product.getPrice()*product.getDiscount())));
             productRepo.put(product.getId(), product);
-            product.setTotal();
             return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED); //mengembalikan nilai yang tersimpan
         }
         
@@ -86,9 +90,8 @@ public class myController {
             return new ResponseEntity<>("Id doesn't exist", HttpStatus.OK);//mengembalikan nilai yang tersimpan  
         }
         else{
-                productRepo.remove(id);     //membuat variabel hapus 
-                product.setTotal();
-                product.setId(id);          
+                productRepo.remove(id);     //membuat variabel hapus
+                product.setTotal((product.getPrice()-(product.getPrice()*product.getDiscount())));
                 productRepo.put(id, product);       //mengambil id,product sekaligus
                 return new ResponseEntity<>("Product is update successsfully", HttpStatus.OK);
                //dalam sebuah variabel
